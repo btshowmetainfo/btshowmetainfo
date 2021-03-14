@@ -1,4 +1,5 @@
 ![](https://travis-ci.com/btshowmetainfo/btshowmetainfo.svg?branch=master)
+![](https://img.shields.io/docker/cloud/build/btshowmetainfo/btshowmetainfo)
 
 Example
 
