@@ -33,6 +33,8 @@ comment.......: Ubuntu CD releases.ubuntu.com
 
 ```bash
 curl --silent https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso.torrent | ./btshowmetainfo -
+
+./btshowmetainfo ubuntu-18.04.4-desktop-amd64.iso.torrent
 ```
 
 # Build and run
