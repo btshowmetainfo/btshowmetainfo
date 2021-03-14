@@ -1,3 +1,5 @@
+![](https://travis-ci.com/btshowmetainfo/btshowmetainfo.svg?branch=master)
+
 Example
 
 ```bash
