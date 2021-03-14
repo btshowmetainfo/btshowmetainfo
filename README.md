@@ -28,6 +28,13 @@ announce-list.: https://torrent.ubuntu.com/announce|https://ipv6.torrent.ubuntu.
 comment.......: Ubuntu CD releases.ubuntu.com
 ```
 
+
+# With the wrapper script
+
+```bash
+curl --silent https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso.torrent | ./btshowmetainfo -
+```
+
 # Build and run
 Clone the repo, then
 

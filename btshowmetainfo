@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+# wrapper script
+temp_file=$(mktemp)
+
+if test "$1" == "-" ; then
+    cat </dev/stdin >"${temp_file}"
+else
+    cp "$1" "${temp_file}"
+fi
+
+sudo docker run \
+    --rm \
+    --volume "${temp_file}:/a.torrent" \
+    btshowmetainfo/btshowmetainfo
+
+rm "${temp_file}"
