@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+docker build -t btshowmetainfo .
+
+docker run \
+    --rm \
+    --volume "$(pwd)/ubuntu-18.04.4-desktop-amd64.iso.torrent:/a.torrent" \
+    btshowmetainfo | grep 286d2e5b4f8369855328336ac1263ae02a7a60d5
+
+echo "BUILD AND TEST SUCCESSFUL."
