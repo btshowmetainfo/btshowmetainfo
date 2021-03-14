@@ -2,13 +2,16 @@
 [![](https://img.shields.io/docker/cloud/build/btshowmetainfo/btshowmetainfo)](https://hub.docker.com/r/btshowmetainfo/btshowmetainfo)
 
 # Using the container
-E.g.
+For example:
 
 
 ```bash
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso.torrent
 
-docker run --rm -v "$(pwd)/ubuntu-20.04.2-live-server-amd64.iso.torrent:/a.torrent" btshowmetainfo/btshowmetainfo
+docker run \
+    --rm \
+    --volume "$(pwd)/ubuntu-20.04.2-live-server-amd64.iso.torrent:/a.torrent" \
+    btshowmetainfo/btshowmetainfo
 ```
 
 gives
