@@ -3,9 +3,19 @@ set -euo pipefail
 
 docker build -t btshowmetainfo .
 
-docker run \
-    --rm \
-    --volume "$(pwd)/ubuntu-18.04.4-desktop-amd64.iso.torrent:/a.torrent" \
-    btshowmetainfo | grep 286d2e5b4f8369855328336ac1263ae02a7a60d5
+function test {    
+    docker run \
+        --rm \
+        --volume "$(pwd)/$f:/a.torrent" \
+        btshowmetainfo | grep "$h"
+}
+
+f='ubuntu-18.04.4-desktop-amd64.iso.torrent'
+h='286d2e5b4f8369855328336ac1263ae02a7a60d5'
+test
+
+f='ubuntu-20.04.2-live-server-amd64.iso.torrent'
+h='126f82fb33119d2acf93a16cfba6eb1c5787a59f'
+test
 
 echo "BUILD AND TEST SUCCESSFUL."
