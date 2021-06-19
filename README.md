@@ -8,9 +8,10 @@ For example:
 ```bash
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso.torrent
 
+# note: not all versions of docker support mounting individual files!
 docker run \
     --rm \
-    --volume "$(pwd)/ubuntu-20.04.2-live-server-amd64.iso.torrent:/a.torrent" \
+    --volume "$(pwd)/input_/ubuntu-20.04.2-live-server-amd64.iso.torrent:/input/a.torrent" \
     btshowmetainfo/btshowmetainfo
 ```
 
@@ -49,5 +50,13 @@ Clone the repo, then
 ```bash
 docker build . -t btshowmetainfo
 
-docker run --rm -v "$(pwd)/ubuntu-18.04.4-desktop-amd64.iso.torrent:/a.torrent" btshowmetainfo
+# note: not all versions of docker support mounting individual files!
+docker pull btshowmetainfo/btshowmetainfo
+docker run --rm -v "$(pwd)/input_/ubuntu-18.04.4-desktop-amd64.iso.torrent:/input/a.torrent" btshowmetainfo/btshowmetainfo
+
 ```
+
+# See also
+* https://github.com/btshowmetainfo/btshowmetainfo
+* https://travis-ci.com/github/btshowmetainfo/btshowmetainfo
+* https://hub.docker.com/r/btshowmetainfo/btshowmetainfo
