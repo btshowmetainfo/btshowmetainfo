@@ -1,13 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
-docker build -t btshowmetainfo .
+echo "building..."
+TAG=btshowmetainfo/btshowmetainfo
+docker build -t $TAG .
+echo "built. testing..."
 
-function test {    
+function test {
+    mkdir -p ./input
+    cp ./input_/$f ./input/a.torrent
     docker run \
         --rm \
-        --volume "$(pwd)/$f:/a.torrent" \
-        btshowmetainfo | grep "$h"
+        --volume "$(pwd)/input:/input" \
+        $TAG | grep "$h"
 }
 
 f='ubuntu-18.04.4-desktop-amd64.iso.torrent'
@@ -17,5 +22,13 @@ test
 f='ubuntu-20.04.2-live-server-amd64.iso.torrent'
 h='126f82fb33119d2acf93a16cfba6eb1c5787a59f'
 test
+
+echo "repeat test with driver script 1"
+f='./input_/ubuntu-20.04.2-live-server-amd64.iso.torrent'
+./btshowmetainfo - < $f | grep "$h"
+
+echo "repeat test with driver script 2"
+f='./input_/ubuntu-20.04.2-live-server-amd64.iso.torrent'
+./btshowmetainfo $f | grep "$h"
 
 echo "BUILD AND TEST SUCCESSFUL."

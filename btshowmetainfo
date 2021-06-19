@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # wrapper script
-temp_file=$(mktemp)
+temp_dir=$(mktemp --directory)
+temp_file="${temp_dir}/a.torrent"
 
 if test "$1" == "-" ; then
     cat </dev/stdin >"${temp_file}"
@@ -12,7 +13,7 @@ fi
 
 sudo docker run \
     --rm \
-    --volume "${temp_file}:/a.torrent" \
+    --volume "${temp_dir}:/input" \
     btshowmetainfo/btshowmetainfo
 
-rm "${temp_file}"
+rm -rf "${temp_dir}"
